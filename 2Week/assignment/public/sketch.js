@@ -46,7 +46,7 @@ function draw(){
 
 function greet() {
   var name = input.value();
-  greeting.html('it\'s a pleasure, '+name+'. it really is');
+  greeting.html('it\'s a pleasure, '+name+'. it really is. Let\'s keep the magic of tonight going. What is your email?');
   input.value('');
   saveStuff(name);
   button.remove();
