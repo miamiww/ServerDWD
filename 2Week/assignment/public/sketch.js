@@ -2,8 +2,12 @@ var nameData = JSON.parse(localStorage.nameData || null) || {};
 var socket = io.connect(window.location.origin);
 var tableNames;
 var palms;
+var thebutton;
+var theinput;
 var song;
 var showImage = false;
+
+window.resize(250,250);
 
 function preload(){
   song = loadSound('/assets/stangetz.mp3');
@@ -16,11 +20,19 @@ function setup(){
   button = createButton('submit');
   button.position(input.x + input.width, 100);
   button.mousePressed(greet);
-  greeting = createElement('h2', 'it feels better out here, away from the party. may I ask your name?');
+  greeting = createElement('h2', 'it feels better out here, away from the party. \n may I ask your name?');
   greeting.position(20, 5);
   textAlign(CENTER);
   textSize(50);
   song.loop();
+
+
+  // theinput  = documet.getElementById("theinput");
+  // thebutton = document.getElementById("thebutton");
+  // theinput.position(20, 100);
+  // thebutton.position(theinput.x + theinput.width, 100);
+  // thebutton.mousePressed(greet);
+
   palms = document.getElementById("palms");
 }
 
@@ -50,7 +62,7 @@ function journey(){
   saveStuff(newText);
   nextButton.remove();
   unholyButton = createButton("clikc please");
-  unholyButton.position(input.x + input.width, 65);
+  unholyButton.position(input.x + input.width, 100);
   unholyButton.mousePressed(showAll);
 }
 
