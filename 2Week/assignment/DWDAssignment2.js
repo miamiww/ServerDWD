@@ -7,9 +7,16 @@ var count = 0;
 //when someone makes a get request for /
 //respond with "hello world"
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+  res.send(index.html)
 })
 
 app.listen(8000, function () {
   console.log('Example app listening on port 8000!')
+});
+
+var name = [];
+
+app.get('/formpost', function(req,res){
+  res.send("you submitted "+ req.query.textfield);
+  theseSubmissions.push(req.query.textfield);
 });
