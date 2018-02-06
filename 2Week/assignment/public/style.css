@@ -1,0 +1,22 @@
+body {
+  background-color: black;
+  color: white;
+  float: left;
+  font: arial;
+
+  /* animation-name: ASCII; */
+  /* animation-duration: 5s;
+  animation-iteration-count: infinite; */
+}
+
+/* @keyframes ASCII{
+  0%   {color:green; left:0px; top:0px;}
+  25%  {color:yellow; left:200px; top:0px;}
+  50%  {color:blue; left:200px; top:200px;}
+  75%  {color:red; left:0px; top:200px;}
+  100% {color:green; left:0px; top:0px;}
+} */
+
+.center {
+  text-align: center;
+}
