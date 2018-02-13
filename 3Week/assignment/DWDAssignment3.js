@@ -4,7 +4,7 @@ var db = mongojs(config.mlabstring,[config.collection]);
 var express = require('express')
 var app = express()
 app.use(express.static(__dirname + '/public'));
-var server = app.listen(8001);
+var server = app.listen(8000);
 var io = require('socket.io')(server);
 var count = 0;
 
