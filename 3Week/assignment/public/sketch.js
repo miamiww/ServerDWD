@@ -68,7 +68,7 @@ function journey(){
   unholyButton = createButton("promise");
   unholyButton.position(input.x + input.width, 100);
   unholyButton.mousePressed(showAll);
-}
+} 
 
 function showAll(){
   var lastText = input.value();

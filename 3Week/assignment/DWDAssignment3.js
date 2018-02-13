@@ -55,3 +55,28 @@ io.on('connection', function(socket) {
     });
 
 });
+
+
+app.get('/yourfriends', function(req, res) {
+
+  db.nameandaddress.find({}, function(err, saved) {
+    if (err || !saved) {
+    	console.log("No results");
+    }
+    else {
+      console.log(saved);
+      res.render('display.ejs', {thedata:saved});
+
+    	// saved.forEach(function(record) {
+      // 	console.log(record);
+    	// });
+
+    	/* Alternatively you could loop through the records with a "for"
+    	for (var i = 0; i < saved.length; i++) {
+  	  	console.log(saved[i]);
+  	}
+  	*/
+    }
+  });
+
+});
