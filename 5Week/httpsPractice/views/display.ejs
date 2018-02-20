@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Some Template</title>
+    <script type="text/javascript">
+      function setup() {
+        var datafromserver = "<%=thedata%>";
+        //alert(datafromserver);
+      }
+
+      window.addEventListener('load', setup);
+
+    </script>
+
+  </head>
+  <body style="background-color: black; color: white; font-family: monospace;">
+
+    <% for (var i = 0; i < thedata.length; i++) { %>
+      <div> <%= thedata[i].name %> :
+    <%= thedata[i].finalword %> </div><br/>
+    <!--JSON.stringify(thedata[i])-->
+    <% } %>
+
+  </body>
+</html>

@@ -4,4 +4,5 @@ Ignore
 *.mp3
 config.js
 dwd-spring2018
+*.pem
 DWD_Class2
