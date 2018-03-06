@@ -9,7 +9,7 @@ var https = require('https');
 
 var astrologicalSigns = ["aries", "leo", "sagittarius","taurus", "virgo", "capricorn","gemini", "libra", "aquarius","cancer", "scorpio", "pisces"];
 var politics = ["left", "left","left","right"];
-var fortunes = ["Ahaaa yes I see it... Long walks down country lanes, the pleasant breeze scented with sweet summer air, and then ... POOF, all it goes away, a sudden gust, a falling rooftile, and you are undone"];
+var fortunes = ["Ahaaa yes I see it... Long walks down country lanes, the pleasant breeze scented with sweet summer air, and then ... POOF, all it goes away, a sudden gust, a falling rooftile, and you are undone. a sad fate, but of course the one that awaits us all, after all, to be done in by errant rooftiles. why my Uncle George died in much the same way, a country lane, the bees abuzz with all of life's wonders... what a beautiful scene it was, I remember it fondly, the blood, the screaming, the wailing, 'aaah aaah george, please, george ah boo ah hoo'"];
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
