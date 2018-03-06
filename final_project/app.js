@@ -1,4 +1,4 @@
-const NodeWebcam = require( "node-webcam" );
+// const NodeWebcam = require( "node-webcam" );
 const fs = require('fs');
 const skybiometry = require('skybiometry');
 var config = require('./config.js')
@@ -20,7 +20,7 @@ function getRandomInt(min, max) {
 
 //on a request to / serve index.html
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/public' + '/index.html');
 });
 
 app.use(express.static(__dirname + '/public'));
@@ -39,14 +39,14 @@ var opts = {
 }
 
 //create a new webcam object with the given attributes
-var Webcam = NodeWebcam.create( opts );
+// var Webcam = NodeWebcam.create( opts );
 
 
 //Will automatically append location output type
-setInterval(function()
-  { Webcam.capture( "public/images/test_image" ); },
-  36500
-);
+// setInterval(function()
+//   { Webcam.capture( "public/images/test_image" ); },
+//   36500
+// );
 
 
 
@@ -74,7 +74,7 @@ fs.watch('./public/images', function (event, filename) {
   //         res.send(parsedresults.photos[0].tags[0].attributes);
 
 //          });
-        } else{
+        } else{ 
           console.log("noface");
         }
       });
