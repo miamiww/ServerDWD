@@ -5,8 +5,7 @@ var config = require('./config.js')
 const client = new skybiometry.Client(config.key1, config.key2);
 const express = require("express");
 const app = express();
-const server = app.listen(3000);
-const io = require('socket.io')(server);
+var https = require('https');
 
 var astrologicalSigns = ["aries", "leo", "sagittarius","taurus", "virgo", "capricorn","gemini", "libra", "aquarius","cancer", "scorpio", "pisces"];
 var politics = ["left", "left","left","right"];
@@ -16,7 +15,15 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+credentials = {
+  key: fs.readFileSync('/etc/letsencrypt/live/arj247.itp.io/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/arj247.itp.io/cert.pem')
+};
 
+var httpsServer = https.createServer(credentials, app);
+const io = require('socket.io')(httpsServer);
+// Default HTTPS Port
+httpsServer.listen(443);
 
 //on a request to / serve index.html
 app.get('/', function(req, res) {
