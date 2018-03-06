@@ -69,7 +69,7 @@ fs.watch('./public/images', function (event, filename) {
           var signValue = getRandomInt(0,11);
           var politicsValue = getRandomInt(0,3);
           sendstring = "Gender: " + parsedresults.photos[0].tags[0].attributes.gender.value + " Age: " + parsedresults.photos[0].tags[0].attributes.age_est.value + " Mood: " + parsedresults.photos[0].tags[0].attributes.mood.value;
-          sendstring = sendstring + '\n ' + fortunes[0];
+          sendstring = sendstring + '\n   ...  ...  ' + fortunes[0];
           console.log(sendstring);
           io.sockets.emit('mysocket', sendstring);
 //          app.get("/", function(req, res) {
