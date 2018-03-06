@@ -9,6 +9,7 @@ var https = require('https');
 
 var astrologicalSigns = ["aries", "leo", "sagittarius","taurus", "virgo", "capricorn","gemini", "libra", "aquarius","cancer", "scorpio", "pisces"];
 var politics = ["left", "left","left","right"];
+var fortunes = ["Ahaaa yes I see it... Long walks down country lanes, the pleasant breeze scented with sweet summer air, and then ... POOF, all it goes away, a sudden gust, a falling rooftile, and you are undone"];
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -67,7 +68,8 @@ fs.watch('./public/images', function (event, filename) {
           //facial attributes get printed out here
           var signValue = getRandomInt(0,11);
           var politicsValue = getRandomInt(0,3);
-          sendstring = "Gender: " + parsedresults.photos[0].tags[0].attributes.gender.value + " Glasses: " + parsedresults.photos[0].tags[0].attributes.glasses.value + " Smiling: " + parsedresults.photos[0].tags[0].attributes.glasses.value + " Age: " + parsedresults.photos[0].tags[0].attributes.age_est.value + " Mood: " + parsedresults.photos[0].tags[0].attributes.mood.value + "  Eyes: " + parsedresults.photos[0].tags[0].attributes.eyes.value + " Lips: " + parsedresults.photos[0].tags[0].attributes.lips.value + " Sign: " + astrologicalSigns[signValue] + " Politics: " + politics[politicsValue];
+          sendstring = "Gender: " + parsedresults.photos[0].tags[0].attributes.gender.value + " Age: " + parsedresults.photos[0].tags[0].attributes.age_est.value + " Mood: " + parsedresults.photos[0].tags[0].attributes.mood.value;
+          sendstring = sendstring + '\n ' + fortunes[0];
           console.log(sendstring);
           io.sockets.emit('mysocket', sendstring);
 //          app.get("/", function(req, res) {
@@ -77,6 +79,9 @@ fs.watch('./public/images', function (event, filename) {
 
 //          });
         } else{
+          var facehide = "I am afraid to say that you have not been completely honest with me, why hide from the truth when you are meant to be SEEN"
+          console.log(facehide);
+          io.sockets.emit('mysocket', facehide);
           console.log("noface");
         }
       });

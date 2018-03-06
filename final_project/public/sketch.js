@@ -8,9 +8,9 @@ var theinput;
 var song;
 var showImage = false;
 
-var script = ['Welcome! Welcome! Come in, please, I do insist. \n For you see, you were expected, entirely'];
+var script = ['Welcome! Welcome! Come in, please, I do insist. \n For you see, you were expected, entirely, your every keystroke anticipated'];
 
-window.resize(250,250);
+
 
 
 
@@ -58,10 +58,18 @@ function preload(){
 
 function setup(){
   createCanvas(400, 400);
-  input = createInput();
-  input.position(20, 100);
-  button = createButton('submit');
-  button.position(input.x + input.width, 100);
+  // input = createInput();
+  // input.position(20, 100);
+
+  var buttonPosish = {
+    x: width/2,
+    y: height/2
+  }
+  button = createButton('yes?');
+  button.size(50,50);
+  button.style('background-color', 'fff0f5');
+  button.style('font-family', 'monotype');
+  button.position(20, buttonPosish.y);
   button.mousePressed(greet);
   greeting = createElement('h2', script[0]);
   greeting.position(20, 5);
@@ -91,36 +99,45 @@ function draw(){
 }
 
 function greet() {
-  var name = input.value();
-  greeting.html(' if you would, please, allow me to see you?'+name+'');
-  input.value('');
-  saveStuff(name,"name");
+  // var name = input.value();
+  greeting.html('if you would, please, allow me to see you?');
+  // input.value('');
+  // saveStuff(name,"name");
   button.remove();
-  nextButton = createButton("submit");
-  nextButton.position(input.x + input.width, 100);
+  nextButton = createButton("of course");
+  nextButton.size(50,50);
+
+  nextButton.style('background-color', 'fff0f5');
+  nextButton.style('font-family', 'monotype')
+  nextButton.position(20, height/2);
   nextButton.mousePressed(journey);
   initWebRTC();
 }
 
 function journey(){
-  var newText = input.value();
-  greeting.html("");
-  input.value('');
-  saveStuff(newText,"yes?");
+  // var newText = input.value();
+  greeting.html("yes yes YES it is all made plain, plain as the rooster's morning crow, your fate you see, is seen by me. care to know?");
+  // input.value('');
+  // saveStuff(newText,"yes?");
   nextButton.remove();
-  unholyButton = createButton("promise");
-  unholyButton.position(input.x + input.width, 100);
+  unholyButton = createButton("tell me");
+  unholyButton.size(50,50);
+
+  unholyButton.style('background-color', 'fff0f5');
+  unholyButton.style('font-family', 'monotype')
+  unholyButton.position(20, height/2);
   unholyButton.mousePressed(showAll);
-  drawPic();
+
 }
 
 function showAll(){
-  var lastText = input.value();
-  saveStuff(lastText,"finalword");
+  // var lastText = input.value();
+  // saveStuff(lastText,"finalword");
   unholyButton.remove();
   greeting.remove();
-  input.remove();
-  document.getElementById("thebutton").style.display = "block";
+  drawPic();
+  // input.remove();
+  // document.getElementById("thebutton").style.display = "block";
 
 }
 
