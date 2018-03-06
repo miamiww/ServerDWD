@@ -8,10 +8,13 @@ var theinput;
 var song;
 var showImage = false;
 
+var script = ['Welcome! Welcome! Come in, please, I do insist. \n For you see, you were expected, entirely'];
+
 window.resize(250,250);
 
 
-var initWebRTC = function() {
+
+function initWebRTC(){
 
   // These help with cross-browser functionality
   window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
@@ -28,24 +31,24 @@ var initWebRTC = function() {
       }, function(error) {alert("Failure " + error.code);});
   }
 
-  var thecanvas = document.getElementById('thecanvas');
-  var thecontext = thecanvas.getContext('2d');
 
-  var drawPic = function() {
-    thecontext.drawImage(video,0,0,video.width,video.height);
-    var dataUrl = thecanvas.toDataURL('image/webp', 1);
-    document.getElementById('imagefile').src = dataUrl;
-    socket.emit('image', dataUrl);
-    // setTimeout(draw,3000);
 
-  };
-
-  drawPic();
 };
 
 // window.addEventListener('load', initWebRTC);
 
 
+function drawPic() {
+  var video = document.getElementById('thevideo');
+  var thecanvas = document.getElementById('thecanvas');
+  var thecontext = thecanvas.getContext('2d');
+  thecontext.drawImage(video,0,0,video.width,video.height);
+  var dataUrl = thecanvas.toDataURL('images/webp', 1);
+  document.getElementById('imagefile').src = dataUrl;
+  socket.emit('image', dataUrl);
+  // setTimeout(draw,3000);
+
+};
 
 
 
@@ -60,7 +63,7 @@ function setup(){
   button = createButton('submit');
   button.position(input.x + input.width, 100);
   button.mousePressed(greet);
-  greeting = createElement('h2', 'Welcome! Welcome! Come in, please, I do insist. \n For you see, you were expected, entirely');
+  greeting = createElement('h2', script[0]);
   greeting.position(20, 5);
   textAlign(CENTER);
   textSize(50);
@@ -96,6 +99,7 @@ function greet() {
   nextButton = createButton("submit");
   nextButton.position(input.x + input.width, 100);
   nextButton.mousePressed(journey);
+  initWebRTC();
 }
 
 function journey(){
@@ -107,6 +111,7 @@ function journey(){
   unholyButton = createButton("promise");
   unholyButton.position(input.x + input.width, 100);
   unholyButton.mousePressed(showAll);
+  drawPic();
 }
 
 function showAll(){
@@ -116,21 +121,9 @@ function showAll(){
   greeting.remove();
   input.remove();
   document.getElementById("thebutton").style.display = "block";
-  initWebRTC();
-  // _dataLoader("names.csv");
-  // lastButton = createButton("see friends");
-  // lastButton.position(10,10);
-  // lastButton.mousePressed(printOut);
+
 }
 
-function printOut(){
-  lastButton.remove();
-  console.log(tableNames.getColumn("name"));
-  for(var r = 0; r < tableNames.getRowCount(); r++){
-    textSize(10);
-    text(tableNames.getRow(r).get(0),width/2,10+10*r);
-  }
-}
 
 // function _dataLoader(dataBaseName,){
 //   tableNames = loadTable(dataBaseName,"csv","header");

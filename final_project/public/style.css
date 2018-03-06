@@ -50,3 +50,11 @@ html {
 #seebutton{
   display: none;
 }
+
+#neon{
+  margin: 80px;
+}
+
+#thecanvas{
+  display: none;
+}

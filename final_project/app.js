@@ -33,30 +33,25 @@ app.get('/', function(req, res) {
 app.use(express.static(__dirname + '/public'));
 
 
-//image attributes
-var opts = {
 
-    width: 360,
-    height: 360,
-    delay: 0,
-    quality: 100,
-    output: "jpeg",
-    verbose: true
-    // device: "HD Pro Webcam C920"
-}
+io.on('connection', function(socket) {
+    console.log('A user connected');
+    socket.on('image',function(data){
+      console.log("connected");
+      console.log(data);
+      var searchFor = "data:image/jpeg;base64,";
+      var strippedImage = data.slice(data.indexOf(searchFor) + searchFor.length);
+      var binaryImage = new Buffer(strippedImage, 'base64');
+      console.log('between');
+      console.log(binaryImage)
+      fs.writeFileSync(__dirname + '/public/images/theimage' + Date.now() + '.jpg', binaryImage);
 
-//create a new webcam object with the given attributes
-// var Webcam = NodeWebcam.create( opts );
+    });
+    socket.on('disconnect', function () {
+       console.log('A user disconnected');
+    });
 
-
-//Will automatically append location output type
-// setInterval(function()
-//   { Webcam.capture( "public/images/test_image" ); },
-//   36500
-// );
-
-
-
+});
 //watch the image folder for changes, send any changed images to the api
 //console log the results
 fs.watch('./public/images', function (event, filename) {
@@ -81,7 +76,7 @@ fs.watch('./public/images', function (event, filename) {
   //         res.send(parsedresults.photos[0].tags[0].attributes);
 
 //          });
-        } else{ 
+        } else{
           console.log("noface");
         }
       });
