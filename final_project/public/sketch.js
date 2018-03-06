@@ -89,7 +89,7 @@ function draw(){
 
 function greet() {
   var name = input.value();
-  greeting.html(' '+name+'');
+  greeting.html(' if you would, please, allow me to see you?'+name+'');
   input.value('');
   saveStuff(name,"name");
   button.remove();
@@ -100,7 +100,7 @@ function greet() {
 
 function journey(){
   var newText = input.value();
-  greeting.html("if you would, please, allow me to see you?");
+  greeting.html("");
   input.value('');
   saveStuff(newText,"yes?");
   nextButton.remove();
