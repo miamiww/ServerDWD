@@ -78,11 +78,15 @@ function showAll(){
   input.remove();
   document.getElementById("thebutton").style.display = "block";
   // _dataLoader("names.csv");
-  // lastButton = createButton("see friends");
-  // lastButton.position(10,10);
-  // lastButton.mousePressed(printOut);
+  lastButton = createButton("again?");
+  lastButton.position(10,10);
+  lastButton.mousePressed(allAgain);
 }
 
+function allAgain(){
+  location.reload()
+
+}
 function printOut(){
   lastButton.remove();
   console.log(tableNames.getColumn("name"));
